@@ -106,6 +106,28 @@ const projects = [
     github: ""
   },
   {
+    id: 20260312,
+    title: "I See You Now",
+    subtitle: "Storytelling Platform",
+    description: "A mission-driven storytelling platform and studio to let people authentically share who they truly are and to protect human creativity and authenticity in the age of AI.",
+    image: "https://oxputeaplbndzolsnyto.supabase.co/storage/v1/object/sign/Usman%20Imran/Screenshot%202026-03-12%20113355.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wNmIzYmExMi1hYzlhLTQ3YTQtOTNkNS0xYTEyMzE4NTM4NTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJVc21hbiBJbXJhbi9TY3JlZW5zaG90IDIwMjYtMDMtMTIgMTEzMzU1LnBuZyIsImlhdCI6MTc3MzI5NzQ1MSwiZXhwIjoxODA0ODMzNDUxfQ._qshMrvM5kDM2yA30cySmzaMjuRGCO1BuNhVWgOPCJk",
+    category: "full-stack",
+    tags: ["Platform", "Storytelling", "AI"],
+    link: "https://iseeyounow.org/",
+    github: ""
+  },
+  {
+    id: 20260313,
+    title: "Bismillah Caters",
+    subtitle: "Catering Service Platform",
+    description: "A premium catering platform for weddings and corporate events, focused on delivering high-quality, fresh halal food with diverse menu options.",
+    image: "https://oxputeaplbndzolsnyto.supabase.co/storage/v1/object/sign/Usman%20Imran/Screenshot%202026-03-12%20113432.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wNmIzYmExMi1hYzlhLTQ3YTQtOTNkNS0xYTEyMzE4NTM4NTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJVc21hbiBJbXJhbi9TY3JlZW5zaG90IDIwMjYtMDMtMTIgMTEzNDMyLnBuZyIsImlhdCI6MTc3MzI5NzUxNSwiZXhwIjoxNzc1ODg5NTE1fQ.dxphjYuqdoSQ7rlWUQxOjCFqeFAMxDGy9QKoiXIFqj4",
+    category: "full-stack",
+    tags: ["Next.js", "Catering", "Events"],
+    link: "https://www.bismillahcaters.com/",
+    github: ""
+  },
+  {
     id: 999,
     title: "BECM Solana",
     subtitle: "NFT Marketplace",

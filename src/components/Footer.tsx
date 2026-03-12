@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Heart, Instagram } from 'lucide-react';
+import { Github, Linkedin, Twitter, Heart, Instagram, Facebook } from 'lucide-react';
 import logoUrl from '../assets/ChatGPT Image Mar 12, 2026, 03_18_26 AM.png';
 
 export const Footer = () => {
@@ -19,7 +19,7 @@ export const Footer = () => {
                         </p>
                         <div className="flex gap-3">
                             {[
-                                { icon: Twitter, href: '#', label: 'Twitter' },
+                                { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61579562632163', label: 'Facebook', target: '_blank', rel: 'noopener noreferrer' },
                                 { icon: Linkedin, href: '#', label: 'LinkedIn' },
                                 { icon: Github, href: 'https://github.com/usmanimran-dev', label: 'GitHub', target: '_blank', rel: 'noopener noreferrer' },
                                 { icon: Instagram, href: '#', label: 'Instagram' },
@@ -49,9 +49,8 @@ export const Footer = () => {
                             {[
                                 { label: 'Services', href: '#services' },
                                 { label: 'Projects', href: '#projects' },
-                                { label: 'Experience', href: '#work-experience' },
                                 { label: 'About', href: '#about' },
-                                { label: 'Contact', href: '#contact' },
+                                { label: 'Blog', href: '/blog' },
                             ].map((link) => (
                                 <li key={link.label}>
                                     <a
@@ -79,9 +78,6 @@ export const Footer = () => {
                         <ul className="space-y-3 text-textSecondary">
                             <li className="hover:text-mint transition-colors duration-300">
                                 <a href="mailto:Webappdevelopersofchicago@gmail.com">Webappdevelopersofchicago@gmail.com</a>
-                            </li>
-                            <li className="hover:text-mint transition-colors duration-300">
-                                <a href="tel:+923259283582">+92 3259283582</a>
                             </li>
                             <li>Chicago, IL</li>
                         </ul>

@@ -1,5 +1,4 @@
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
-import { CustomCursor } from '@/components/CustomCursor';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Services } from '@/components/Services';
@@ -24,7 +23,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <CustomCursor />
       <Header />
       <main>
         <Hero />
@@ -35,14 +33,14 @@ const Index = () => {
         </Section>
         <Projects />
         <About />
-        <WorkExperience />
+        {/* <WorkExperience /> — temporarily hidden */}
         <Blog />
-        <AIAnnouncements />
+        {/* <AIAnnouncements /> */}
         <Testimonials />
-        <Contact />
+        {/* <Contact /> — temporarily hidden */}
       </main>
       <Footer />
-      <AdminFab />
+      {/* Admin access via direct URL: /admin */}
       {showLogin && <Login />}
     </div>
   );

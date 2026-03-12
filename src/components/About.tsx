@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Award, Users, Target, Sparkles } from 'lucide-react';
 
 const stats = [
-    { icon: Award, label: 'Years Experience', value: '5+' },
+    { icon: Award, label: 'Years Experience', value: '10+' },
     { icon: Users, label: 'Enterprise Clients', value: 'Global' },
     { icon: Target, label: 'Scalable Platforms', value: 'Production' },
 ];

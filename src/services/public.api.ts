@@ -95,7 +95,7 @@ export const fetchAllBlogs = async (): Promise<BlogPost[]> => {
         (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
     );
     
-    return allBlogs;
+    return allBlogs.length > 0 ? allBlogs : MOCK_BLOGS;
 };
 
 // Dev.to articles

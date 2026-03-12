@@ -273,10 +273,12 @@ async function runPipeline() {
             totalNew++;
 
             // Generate blog article
-            const articleContent = await generateBlogArticle(item.title, item.excerpt);
-            if (articleContent) {
-                await publishBlogPost(savedItem, articleContent);
+            let articleContent = await generateBlogArticle(item.title, item.excerpt);
+            if (!articleContent) {
+                console.log(`Fallback: Using original excerpt for "${item.title}" due to API error.`);
+                articleContent = `${item.excerpt}\n\n[Read the full article here](${item.link})`;
             }
+            await publishBlogPost(savedItem, articleContent);
 
             // Small delay to respect API rate limits
             await new Promise(r => setTimeout(r, 2000));

@@ -33,8 +33,6 @@ export function Header() {
         { label: 'Services', href: '/#services' },
         { label: 'Projects', href: '/#projects' },
         { label: 'Blog', href: '/blog' },
-        { label: 'Experience', href: '/#work-experience' },
-        { label: 'Contact', href: '/#contact' },
     ];
 
     const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
