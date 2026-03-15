@@ -58,7 +58,7 @@ export const AnnouncementBar = () => {
                         {!isSectionLink ? <Sparkles className="w-3 h-3" /> : <Megaphone className="w-3 h-3" />}
                     </span>
                     <span className="hidden sm:inline text-white/50 tracking-wider text-xs uppercase font-bold">
-                        {!isSectionLink ? 'LATEST BLOG' : 'ANNOUNCEMENT'}
+                        {!isSectionLink ? 'Trending News' : 'ANNOUNCEMENT'}
                     </span>
                     <div className="h-3 w-px bg-white/20 hidden sm:block mx-1"></div>
                     <a 
