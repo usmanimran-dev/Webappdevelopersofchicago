@@ -8,6 +8,7 @@ import {
     Clock, Sparkles, AlertCircle, CheckCircle2, Lock
 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
+import { redirectToCheckout } from '@/lib/stripe';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface ServiceOption {
@@ -105,6 +106,7 @@ export default function HireUsModal({ isOpen, onClose }: HireUsModalProps) {
     const [submitting, setSubmitting] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState<Record<string, string>>({});
+    const [paymentError, setPaymentError] = useState<string | null>(null);
 
     const [qualification, setQualification] = useState<QualificationData>({
         name: '', email: '', phone: '', company: '',
@@ -210,9 +212,10 @@ export default function HireUsModal({ isOpen, onClose }: HireUsModalProps) {
     const handleOnboardSubmit = async () => {
         if (!validateOnboarding()) return;
         setSubmitting(true);
-        
+        setPaymentError(null);
+
         try {
-            // Save to Supabase
+            // Step 1: Save to Supabase as 'pending'
             const { error } = await supabase
                 .from('client_onboarding')
                 .insert({
@@ -228,16 +231,26 @@ export default function HireUsModal({ isOpen, onClose }: HireUsModalProps) {
                 });
 
             if (error) {
-                console.error("Error saving onboarding data:", error);
-                // We could show an alert here, but we'll proceed to success anyway for UX 
-                // assuming the user might just not have created the table yet.
+                console.error('Error saving onboarding data:', error);
             }
-        } catch (err) {
-            console.error("Unexpected error:", err);
-        }
 
-        setSubmitting(false);
-        setPhase('success');
+            // Step 2: Redirect to Stripe Checkout
+            await redirectToCheckout({
+                clientId: onboarding.clientId,
+                clientName: qualification.name,
+                clientEmail: qualification.email,
+                serviceName: selectedService?.label || 'Service',
+                servicePrice: selectedService?.priceValue || 0,
+                discountApplied,
+            });
+
+            // Note: If redirectToCheckout succeeds, the browser navigates away.
+            // The code below only runs if something went wrong.
+        } catch (err: any) {
+            console.error('Payment redirect error:', err);
+            setPaymentError(err?.message || 'Unable to connect to payment provider. Please try again.');
+            setSubmitting(false);
+        }
     };
 
     const passwordStrength = getPasswordStrength(onboarding.password);
@@ -690,6 +703,14 @@ export default function HireUsModal({ isOpen, onClose }: HireUsModalProps) {
                                             )}
                                         </div>
 
+                                        {/* Payment Error */}
+                                        {paymentError && (
+                                            <div className="mt-6 flex items-center gap-2 text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
+                                                <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                                                <span>{paymentError}</span>
+                                            </div>
+                                        )}
+
                                         {/* Submit */}
                                         <div className="mt-8 flex justify-between items-center pt-6 border-t border-white/10">
                                             <button onClick={() => setPhase('qualify')} className="text-sm text-white/40 hover:text-white transition-colors px-4 py-2 rounded-xl hover:bg-white/5">
@@ -703,9 +724,9 @@ export default function HireUsModal({ isOpen, onClose }: HireUsModalProps) {
                                                 whileTap={{ scale: 0.98 }}
                                             >
                                                 {submitting ? (
-                                                    <><Loader2 className="w-4 h-4 animate-spin" /> Processing...</>
+                                                    <><Loader2 className="w-4 h-4 animate-spin" /> Redirecting to Payment...</>
                                                 ) : (
-                                                    <><Lock className="w-4 h-4" /> Complete Onboarding</>
+                                                    <><Lock className="w-4 h-4" /> Proceed to Payment</>
                                                 )}
                                             </motion.button>
                                         </div>
