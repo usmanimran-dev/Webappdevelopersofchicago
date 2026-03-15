@@ -1,7 +1,5 @@
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
 export default async function handler(req, res) {
     // Only allow POST
     if (req.method !== 'POST') {
@@ -10,6 +8,12 @@ export default async function handler(req, res) {
     }
 
     try {
+        // Check if key is available before initializing Stripe
+        if (!process.env.STRIPE_SECRET_KEY) {
+            return res.status(500).json({ error: 'STRIPE_SECRET_KEY is missing in Vercel project environment variables.' });
+        }
+        const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
         const {
             clientId,
             clientName,
