@@ -18,6 +18,7 @@ export interface BlogPost {
     excerpt: string;
     content: string;
     featured_image: string | null;
+    source_url?: string | null;
     tags: string[];
     created_at: string;
 }

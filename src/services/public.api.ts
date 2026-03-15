@@ -125,7 +125,7 @@ async function fetchAIBlogs(): Promise<BlogPost[]> {
     try {
         const { data, error } = await supabase
             .from('ai_blog_posts')
-            .select('*')
+            .select('*, ai_news(link)')
             .eq('published', true)
             .order('created_at', { ascending: false });
         
@@ -136,8 +136,9 @@ async function fetchAIBlogs(): Promise<BlogPost[]> {
             title: post.title,
             slug: post.slug,
             excerpt: post.excerpt,
-            content: post.content,
+            content: cleanContent(post.content),
             featured_image: post.featured_image || 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800',
+            source_url: post.ai_news?.link || extractSourceUrl(post.content) || null,
             tags: post.tags || ['AI', 'Technology'],
             created_at: post.created_at
         }));
@@ -145,6 +146,33 @@ async function fetchAIBlogs(): Promise<BlogPost[]> {
         console.error('Error fetching AI blog posts:', error);
         return [];
     }
+}
+
+/**
+ * Extracts a source URL from markdown-style links in content.
+ * Looks for patterns like [Read the full article here](https://...)
+ */
+function extractSourceUrl(content: string): string | null {
+    if (!content) return null;
+    // Match markdown link: [text](url)
+    const mdMatch = content.match(/\[(?:Read|read)[^\]]*\]\((https?:\/\/[^)]+)\)/i);
+    if (mdMatch) return mdMatch[1];
+    // Match raw <a href="..."> 
+    const htmlMatch = content.match(/<a[^>]+href=["'](https?:\/\/[^"']+)["'][^>]*>[^<]*(?:read|article|source)[^<]*<\/a>/i);
+    if (htmlMatch) return htmlMatch[1];
+    return null;
+}
+
+/**
+ * Cleans markdown link syntax from content and converts to proper HTML links.
+ */
+function cleanContent(content: string): string {
+    if (!content) return '';
+    // Convert markdown links [text](url) to <a> tags
+    return content.replace(
+        /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,
+        '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-mint hover:underline">$1</a>'
+    );
 }
 
 export const fetchBlogBySlug = async (slug: string): Promise<BlogPost | null> => {
@@ -172,7 +200,7 @@ export const fetchBlogBySlug = async (slug: string): Promise<BlogPost | null> =>
     try {
         const { data, error } = await supabase
             .from('ai_blog_posts')
-            .select('*')
+            .select('*, ai_news(link)')
             .eq('slug', slug)
             .eq('published', true)
             .single();
@@ -184,8 +212,9 @@ export const fetchBlogBySlug = async (slug: string): Promise<BlogPost | null> =>
             title: data.title,
             slug: data.slug,
             excerpt: data.excerpt,
-            content: data.content,
+            content: cleanContent(data.content),
             featured_image: data.featured_image || 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800',
+            source_url: data.ai_news?.link || extractSourceUrl(data.content) || null,
             tags: data.tags || ['AI', 'Technology'],
             created_at: data.created_at
         };

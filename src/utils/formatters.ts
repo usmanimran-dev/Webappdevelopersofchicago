@@ -27,12 +27,6 @@ export const formatDate = (timestamp: string): string => {
  * Returns an estimated reading time for a given text.
  * Example: "240 words" => "~2 min read"
  */
-
-
-/**
- * Returns an estimated reading time for a given text.
- * Example: "240 words" => "~2 min read"
- */
 export const readingTime = (content: string): string => {
     const words = content.trim().split(/\s+/).length;
     const minutes = Math.ceil(words / 200);
@@ -40,11 +34,28 @@ export const readingTime = (content: string): string => {
 };
 
 /**
- * Strips HTML tags from a string.
+ * Decodes HTML entities, strips all tags, removes bracket artifacts,
+ * and returns clean readable text.
  */
 export const stripHtml = (html: string): string => {
     if (!html) return '';
-    return html.replace(/<[^>]*>?/gm, '');
+    let text = html;
+    // Decode HTML entities first (&lt; &gt; &amp; &quot; &#39; etc.)
+    text = text.replace(/&lt;/gi, '<');
+    text = text.replace(/&gt;/gi, '>');
+    text = text.replace(/&amp;/gi, '&');
+    text = text.replace(/&quot;/gi, '"');
+    text = text.replace(/&#39;/gi, "'");
+    text = text.replace(/&nbsp;/gi, ' ');
+    // Strip all HTML tags
+    text = text.replace(/<[^>]*>?/gm, '');
+    // Remove markdown links [text](url)
+    text = text.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1');
+    // Remove square bracket artifacts: [Read more], [source], [link], [ ... ], etc.
+    text = text.replace(/\[[^\]]{0,40}\]/g, '');
+    // Clean up extra whitespace
+    text = text.replace(/\s{2,}/g, ' ').trim();
+    return text;
 };
 
 /**

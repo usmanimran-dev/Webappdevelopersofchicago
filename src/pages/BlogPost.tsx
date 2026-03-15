@@ -2,10 +2,36 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { fetchBlogBySlug } from '@/services/public.api';
 import { BlogPost as BlogPostType } from '@/types';
-import { formatDate, readingTime, getValidImageUrl } from '@/utils/formatters';
+import { formatDate, readingTime, getValidImageUrl, stripHtml } from '@/utils/formatters';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { ArrowLeft, Loader2 } from 'lucide-react';
+import { ArrowLeft, Loader2, ExternalLink } from 'lucide-react';
+
+/**
+ * Cleans article content for display:
+ * - Decodes HTML entities
+ * - Removes bracket artifacts like [Read more], [source], etc.
+ * - Keeps valid HTML links intact
+ */
+function cleanArticleContent(content: string): string {
+    if (!content) return '';
+    let text = content;
+    // Decode HTML entities
+    text = text.replace(/&lt;/gi, '<');
+    text = text.replace(/&gt;/gi, '>');
+    text = text.replace(/&amp;/gi, '&');
+    text = text.replace(/&quot;/gi, '"');
+    text = text.replace(/&#39;/gi, "'");
+    text = text.replace(/&nbsp;/gi, ' ');
+    // Remove markdown-style links and convert to HTML links
+    text = text.replace(
+        /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,
+        '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-mint hover:underline">$1</a>'
+    );
+    // Remove leftover bracket artifacts (but not the <a> tags we just created)
+    text = text.replace(/\[[^\]]{0,40}\]/g, '');
+    return text;
+}
 
 export default function BlogPost() {
     const { slug } = useParams<{ slug: string }>();
@@ -49,7 +75,7 @@ export default function BlogPost() {
                             <div className="flex items-center gap-4 text-sm text-white/50 border-b border-white/10 pb-8">
                                 <span className="font-semibold text-white/80">{formatDate(blog.created_at)}</span>
                                 <span>•</span>
-                                <span>{readingTime(blog.content)}</span>
+                                <span>{readingTime(stripHtml(blog.content))}</span>
                             </div>
                         </header>
                         
@@ -65,8 +91,23 @@ export default function BlogPost() {
                             className="prose prose-invert prose-lg max-w-none 
                                         prose-headings:font-display prose-a:text-mint hover:prose-a:underline
                                         whitespace-pre-wrap leading-relaxed text-white/80"
-                            dangerouslySetInnerHTML={{ __html: blog.content }}
+                            dangerouslySetInnerHTML={{ __html: cleanArticleContent(blog.content) }}
                         />
+
+                        {/* Read Full Article Button */}
+                        {blog.source_url && (
+                            <div className="mt-12 pt-8 border-t border-white/10">
+                                <a
+                                    href={blog.source_url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-mint to-emerald-500 text-darkNavy font-bold text-lg hover:shadow-lg hover:shadow-mint/30 transition-all hover:-translate-y-0.5"
+                                >
+                                    <ExternalLink className="w-5 h-5" />
+                                    Read Full Article
+                                </a>
+                            </div>
+                        )}
                     </article>
                 )}
             </main>

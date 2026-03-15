@@ -65,11 +65,8 @@ export default function TrustedBrands() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
-                            className="group relative flex items-center justify-center w-full px-6 py-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.06] hover:border-mint/20 transition-all duration-500 cursor-default"
+                            className="group relative flex items-center justify-center w-full px-6 py-8 cursor-default"
                         >
-                            {/* Hover glow */}
-                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-mint/0 to-mint/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
                             <img
                                 src={brand.logo}
                                 alt={brand.name}
