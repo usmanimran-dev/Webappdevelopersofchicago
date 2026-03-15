@@ -127,6 +127,42 @@ export default defineConfig(({ mode }) => {
               return;
             }
 
+            // Local dev implementation for Send Estimate
+            if (req.url === '/api/send-estimate' && req.method === 'POST') {
+              let bodyText = '';
+              req.on('data', chunk => bodyText += chunk);
+              req.on('end', async () => {
+                try {
+                  const body = JSON.parse(bodyText);
+                  const { email, estimateData } = body;
+
+                  const resendKey = env.RESEND_API_KEY;
+                  if (!resendKey) {
+                    throw new Error('RESEND_API_KEY is not configured');
+                  }
+
+                  const { Resend } = await import('resend');
+                  const resend = new Resend(resendKey);
+
+                  const { data, error } = await resend.emails.send({
+                    from: 'WDC AI Estimator <onboarding@resend.dev>',
+                    to: email,
+                    subject: 'Your AI Project Estimate from WDC',
+                    html: `<h2>Your Estimate</h2><p>${JSON.stringify(estimateData)}</p>` // Simpler for local test
+                  });
+
+                  if (error) throw error;
+                  res.setHeader('Content-Type', 'application/json');
+                  res.end(JSON.stringify({ success: true, id: data?.id }));
+                } catch (e: any) {
+                  console.error('Local Send Estimate Error:', e);
+                  res.statusCode = 500;
+                  res.end(JSON.stringify({ error: e.message }));
+                }
+              });
+              return;
+            }
+
             // Local dev implementation for RSS
             if (req.url === '/rss.xml') {
               const supabaseUrl = env.VITE_SUPABASE_URL;

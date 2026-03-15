@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Sparkles, Loader2, ArrowRight, CheckCircle2, Bot, Code2, Clock } from 'lucide-react';
+import { X, Sparkles, Loader2, ArrowRight, CheckCircle2, Bot, Code2, Clock, Mail, Send } from 'lucide-react';
 
 interface AIEstimatorModalProps {
     isOpen: boolean;
@@ -21,6 +21,10 @@ export const AIEstimatorModal: React.FC<AIEstimatorModalProps> = ({ isOpen, onCl
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [estimate, setEstimate] = useState<EstimateData | null>(null);
+    const [userEmail, setUserEmail] = useState('');
+    const [sendingEmail, setSendingEmail] = useState(false);
+    const [emailSent, setEmailSent] = useState(false);
+    const [emailError, setEmailError] = useState<string | null>(null);
 
     const handleEstimate = async () => {
         if (description.trim().length < 15) {
@@ -30,6 +34,8 @@ export const AIEstimatorModal: React.FC<AIEstimatorModalProps> = ({ isOpen, onCl
 
         setLoading(true);
         setError(null);
+        setEmailSent(false);
+        setEmailError(null);
 
         try {
             const res = await fetch('/api/estimate-project', {
@@ -49,6 +55,35 @@ export const AIEstimatorModal: React.FC<AIEstimatorModalProps> = ({ isOpen, onCl
             setError(err.message || 'An unexpected error occurred.');
         } finally {
             setLoading(false);
+        }
+    };
+
+    const handleSendEmail = async () => {
+        if (!userEmail || !userEmail.includes('@')) {
+            setEmailError('Please enter a valid email address.');
+            return;
+        }
+
+        setSendingEmail(true);
+        setEmailError(null);
+
+        try {
+            const res = await fetch('/api/send-estimate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: userEmail, estimateData: estimate })
+            });
+
+            if (!res.ok) {
+                const errData = await res.json();
+                throw new Error(errData.error || 'Failed to send email');
+            }
+
+            setEmailSent(true);
+        } catch (err: any) {
+            setEmailError(err.message || 'Failed to send email.');
+        } finally {
+            setSendingEmail(false);
         }
     };
 
@@ -197,6 +232,46 @@ export const AIEstimatorModal: React.FC<AIEstimatorModalProps> = ({ isOpen, onCl
                                                 ))}
                                             </div>
                                         </div>
+                                    </div>
+
+                                    {/* Email Capture */}
+                                    <div className="pt-8 border-t border-white/10">
+                                        {emailSent ? (
+                                            <div className="bg-mint/10 border border-mint/20 rounded-2xl p-6 text-center">
+                                                <div className="w-12 h-12 bg-mint/20 text-mint rounded-full flex items-center justify-center mx-auto mb-4">
+                                                    <CheckCircle2 className="w-6 h-6" />
+                                                </div>
+                                                <h4 className="text-white font-bold mb-1">Estimate Sent!</h4>
+                                                <p className="text-white/60 text-sm">Check your inbox at {userEmail} for your custom breakdown.</p>
+                                            </div>
+                                        ) : (
+                                            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                                                <h4 className="text-white font-bold mb-2 flex items-center gap-2">
+                                                    <Mail className="w-4 h-4 text-royalBlue" />
+                                                    Email me this estimate
+                                                </h4>
+                                                <p className="text-white/50 text-xs mb-4">We'll send a full copy of this analysis and private access to our discovery booking link.</p>
+                                                
+                                                <div className="flex flex-col sm:flex-row gap-3">
+                                                    <input 
+                                                        type="email" 
+                                                        placeholder="you@example.com"
+                                                        value={userEmail}
+                                                        onChange={(e) => setUserEmail(e.target.value)}
+                                                        className="flex-1 bg-darkNavy border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-mint transition-all"
+                                                    />
+                                                    <button
+                                                        onClick={handleSendEmail}
+                                                        disabled={sendingEmail}
+                                                        className="bg-mint text-darkNavy font-bold px-6 py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-mintDark transition-all disabled:opacity-50"
+                                                    >
+                                                        {sendingEmail ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+                                                        Send
+                                                    </button>
+                                                </div>
+                                                {emailError && <p className="text-red-400 text-xs mt-2">{emailError}</p>}
+                                            </div>
+                                        )}
                                     </div>
 
                                     {/* Reset CTA */}
