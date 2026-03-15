@@ -110,9 +110,9 @@ export function Header() {
                     <div className="hidden md:flex items-center gap-4">
                         <motion.button
                             onClick={() => setIsEstimateModalOpen(true)}
-                            className="flex items-center gap-2 px-4 py-2 rounded-xl border border-mint/30 text-mint font-medium hover:bg-mint/10 hover:border-mint transition-all"
+                            className="hidden items-center gap-2 px-4 py-2 rounded-xl border border-mint/30 text-mint font-medium hover:bg-mint/10 hover:border-mint transition-all pointer-events-none opacity-0"
                             initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
+                            animate={{ opacity: 0, x: 0 }}
                             transition={{ delay: 0.7 }}
                         >
                             <Sparkles className="w-4 h-4" /> AI Estimate
@@ -186,7 +186,7 @@ export function Header() {
                                 transition={{ delay: 0.3 }}
                             >
                                 <button
-                                    className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl border border-mint/30 text-mint font-medium hover:bg-mint/10 transition-all"
+                                    className="hidden items-center justify-center gap-2 w-full px-4 py-3 rounded-xl border border-mint/30 text-mint font-medium hover:bg-mint/10 transition-all pointer-events-none opacity-0"
                                     onClick={() => {
                                         setIsEstimateModalOpen(true);
                                         setIsMobileMenuOpen(false);
