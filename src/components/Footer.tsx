@@ -47,21 +47,14 @@ export const Footer = () => {
                         <h4 className="text-white font-bold mb-4 font-display">Quick Links</h4>
                         <ul className="space-y-3">
                             {[
-                                { label: 'Services', href: '#services' },
-                                { label: 'Projects', href: '#projects' },
-                                { label: 'About', href: '#about' },
+                                { label: 'Services', href: '/#services' },
+                                { label: 'Projects', href: '/#projects' },
+                                { label: 'About', href: '/#about' },
                                 { label: 'Blog', href: '/blog' },
                             ].map((link) => (
                                 <li key={link.label}>
                                     <a
                                         href={link.href}
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            const element = document.querySelector(link.href);
-                                            if (element) {
-                                                element.scrollIntoView({ behavior: 'smooth' });
-                                            }
-                                        }}
                                         className="text-textSecondary hover:text-mint transition-colors duration-300 inline-flex items-center group"
                                     >
                                         <span className="w-0 h-px bg-mint group-hover:w-4 mr-0 group-hover:mr-2 transition-all duration-300"></span>
