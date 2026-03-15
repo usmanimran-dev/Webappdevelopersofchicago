@@ -80,7 +80,7 @@ export default async function handler(req, res) {
             if (resendKey) {
                 const resend = new Resend(resendKey);
                 await resend.emails.send({
-                    from: 'WDC Onboarding <onboarding@yourcustomdomain.com>', // Replace with your verified domain
+                    from: 'WDC Onboarding <onboarding@resend.dev>', // Resend testing domain
                     to: clientEmail,
                     subject: 'Welcome to WDC! Next Steps for your Project',
                     html: `
