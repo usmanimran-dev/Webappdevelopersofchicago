@@ -55,11 +55,11 @@ export const Hero = () => {
             id="home"
             className="relative min-h-screen flex items-center justify-center overflow-hidden bg-darkNavy"
         >
-            {/* Fintech Background Image */}
+            {/* Enterprise Background Image */}
             <div className="absolute inset-0">
                 <img
                     src="/fintech_hero_bg.png"
-                    alt="Fintech Background"
+                    alt="Enterprise Solutions Background"
                     className="w-full h-full object-cover opacity-20"
                 />
             </div>

@@ -23,7 +23,7 @@ const projects = [
     subtitle: "Aid Distribution Platform",
     description: "A full-stack aid distribution platform using Flutter (Web & Mobile), Node.js, and Prisma. Manages beneficiary registration, verification workflows, vendor-based assistance redemption, and audit monitoring with role-based access control. Login: admin@ngo.org | Pwd: admin123",
     image: "https://oxputeaplbndzolsnyto.supabase.co/storage/v1/object/sign/Usman%20Imran/Screenshot%202026-02-25%20204034.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wNmIzYmExMi1hYzlhLTQ3YTQtOTNkNS0xYTEyMzE4NTM4NTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJVc21hbiBJbXJhbi9TY3JlZW5zaG90IDIwMjYtMDItMjUgMjA0MDM0LnBuZyIsImlhdCI6MTc3MjAzNDI1MywiZXhwIjoxODAzNTcwMjUzfQ.NV-sbWkxZb15E2zX83ZHuUzoBiPJ1d9eRpIb_JLxOIQ",
-    category: "full-stack",
+    category: "mobile-apps",
     tags: ["Flutter", "Node.js", "Prisma"],
     link: "https://ngo.virtuohr.com",
     github: ""
@@ -34,7 +34,7 @@ const projects = [
     subtitle: "IoT Telemetry & ERP",
     description: "A secure ERP system for fuel stations that monitors real-time transaction pipelines to prevent revenue loss. Login: usman@gmail.com | Pwd: usman123",
     image: "https://oxputeaplbndzolsnyto.supabase.co/storage/v1/object/sign/Usman%20Imran/Screenshot%202026-01-29%20220645.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wNmIzYmExMi1hYzlhLTQ3YTQtOTNkNS0xYTEyMzE4NTM4NTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJVc21hbiBJbXJhbi9TY3JlZW5zaG90IDIwMjYtMDEtMjkgMjIwNjQ1LnBuZyIsImlhdCI6MTc3MTg3OTM4NiwiZXhwIjoxODAzNDE1Mzg2fQ.7s7Y_XInBw1mi_QiiHKVJIWPWlELnxMfaK7e6U3LlVw",
-    category: "full-stack",
+    category: "web-apps",
     tags: ["Angular", "Supabase", "IoT"],
     link: "https://smart-pump-2eyt.vercel.app/login",
     github: "https://github.com/usmanimran-dev/SmartPump"
@@ -45,7 +45,7 @@ const projects = [
     subtitle: "Dating Discovery App",
     description: "A modern, secure dating platform featuring real-time matching and encrypted communication channels.",
     image: "https://oxputeaplbndzolsnyto.supabase.co/storage/v1/object/sign/Usman%20Imran/Screenshot%202026-01-30%20035558.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wNmIzYmExMi1hYzlhLTQ3YTQtOTNkNS0xYTEyMzE4NTM4NTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJVc21hbiBJbXJhbi9TY3JlZW5zaG90IDIwMjYtMDEtMzAgMDM1NTU4LnBuZyIsImlhdCI6MTc3MTg3OTQyOSwiZXhwIjoxODAzNDE1NDI5fQ.4kGdL9utvVG8wS-08P1m3cx6SgXtcoMPmeJABUBM8bY",
-    category: "full-stack",
+    category: "mobile-apps",
     tags: ["Angular", "Firebase", "Logic"],
     link: "https://datingapp-arxi.vercel.app/signup",
     github: "https://github.com/usmanimran-dev/datingapp"
@@ -56,7 +56,7 @@ const projects = [
     subtitle: "Market Discovery Engine",
     description: "A high-performance indexing engine for local market intelligence, optimized for low-latency search and data retrieval.",
     image: "https://oxputeaplbndzolsnyto.supabase.co/storage/v1/object/sign/Usman%20Imran/Screenshot%202026-01-30%20035500.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wNmIzYmExMi1hYzlhLTQ3YTQtOTNkNS0xYTEyMzE4NTM4NTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJVc21hbiBJbXJhbi9TY3JlZW5zaG90IDIwMjYtMDEtMzAgMDM1NTAwLnBuZyIsImlhdCI6MTc3MTg3OTQ1MCwiZXhwIjoxODAzNDE1NDUwfQ.owfuUOWWmbTdUR1UeW1ZsnxBcjkmYen4hg_HHAZ5XOo",
-    category: "full-stack",
+    category: "web-apps",
     tags: ["React", "Cloud", "SEO"],
     link: "https://pakistan-finds-red.vercel.app/",
     github: "https://github.com/usmanimran-dev/pakistan-finds-red"
@@ -67,7 +67,7 @@ const projects = [
     subtitle: "Digital Treasury Ecosystem",
     description: "A high-fidelity platform for digital asset firms, featuring encrypted data visualization and ultra-modern terminal aesthetics.",
     image: "https://oxputeaplbndzolsnyto.supabase.co/storage/v1/object/sign/Usman%20Imran/Screenshot%202026-01-30%20035422.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wNmIzYmExMi1hYzlhLTQ3YTQtOTNkNS0xYTEyMzE4NTM4NTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJVc21hbiBJbXJhbi9TY3JlZW5zaG90IDIwMjYtMDEtMzAgMDM1NDIyLnBuZyIsImlhdCI6MTc3MTg3OTQ3MywiZXhwIjoxODAzNDE1NDczfQ.eFbN5eP05R6asL0-AhaQ_etaNZ4qnqR3mRf0XiBf6OA",
-    category: "full-stack",
+    category: "web-apps",
     tags: ["Next.js", "Framer", "Tailwind"],
     link: "https://usmanimran.vercel.app/",
     github: "https://github.com/usmanimran-dev/UsmanImran"
@@ -100,7 +100,7 @@ const projects = [
     subtitle: "n8n Automation",
     description: "A smart, fully automated email response system using n8n, GPT, and Gmail API to save time and ensure professional responses.",
     image: videon8nImg,
-    category: "nocode",
+    category: "automation",
     tags: ["n8n", "AI", "Automation"],
     link: "https://vimeo.com/1107894672?share=copy#t=0",
     github: ""
@@ -111,7 +111,7 @@ const projects = [
     subtitle: "Storytelling Platform",
     description: "A mission-driven storytelling platform and studio to let people authentically share who they truly are and to protect human creativity and authenticity in the age of AI.",
     image: "https://oxputeaplbndzolsnyto.supabase.co/storage/v1/object/sign/Usman%20Imran/Screenshot%202026-03-12%20113355.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wNmIzYmExMi1hYzlhLTQ3YTQtOTNkNS0xYTEyMzE4NTM4NTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJVc21hbiBJbXJhbi9TY3JlZW5zaG90IDIwMjYtMDMtMTIgMTEzMzU1LnBuZyIsImlhdCI6MTc3MzI5NzQ1MSwiZXhwIjoxODA0ODMzNDUxfQ._qshMrvM5kDM2yA30cySmzaMjuRGCO1BuNhVWgOPCJk",
-    category: "full-stack",
+    category: "web-apps",
     tags: ["Platform", "Storytelling", "AI"],
     link: "https://iseeyounow.org/",
     github: ""
@@ -122,7 +122,7 @@ const projects = [
     subtitle: "Catering Service Platform",
     description: "A premium catering platform for weddings and corporate events, focused on delivering high-quality, fresh halal food with diverse menu options.",
     image: "https://oxputeaplbndzolsnyto.supabase.co/storage/v1/object/sign/Usman%20Imran/Screenshot%202026-03-12%20113432.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wNmIzYmExMi1hYzlhLTQ3YTQtOTNkNS0xYTEyMzE4NTM4NTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJVc21hbiBJbXJhbi9TY3JlZW5zaG90IDIwMjYtMDMtMTIgMTEzNDMyLnBuZyIsImlhdCI6MTc3MzI5NzUxNSwiZXhwIjoxNzc1ODg5NTE1fQ.dxphjYuqdoSQ7rlWUQxOjCFqeFAMxDGy9QKoiXIFqj4",
-    category: "full-stack",
+    category: "web-apps",
     tags: ["Next.js", "Catering", "Events"],
     link: "https://www.bismillahcaters.com/",
     github: ""
@@ -133,7 +133,7 @@ const projects = [
     subtitle: "NFT Marketplace",
     description: "A decentralized marketplace on Solana for minting and trading digital collectibles with real-time Phantom Wallet integration.",
     image: solanaImg,
-    category: "full-stack",
+    category: "web-apps",
     tags: ["Solana", "Rust", "NFT"],
     link: "https://github.com/usmanimran-dev/Master",
     github: "https://github.com/usmanimran-dev/Master"
@@ -144,7 +144,7 @@ const projects = [
     subtitle: "Bubble.io Social Engine",
     description: "A feature-rich LinkedIn-style web app developed using Bubble.io, with real-time messaging and job listings.",
     image: linkedinImg,
-    category: "nocode",
+    category: "web-apps",
     tags: ["Bubble.io", "No-Code", "Networking"],
     link: "https://bubble.io/page?id=linkedin-16318&tab=Design&name=index",
     github: ""
@@ -210,7 +210,7 @@ const projects = [
     subtitle: "dApp Journal",
     description: "A decentralized journal app built on Solana using Anchor, allowing users to store data directly on-chain.",
     image: solanaImg,
-    category: "full-stack",
+    category: "web-apps",
     tags: ["Solana", "Rust", "dApp"],
     link: "https://github.com/usmanimran-dev/CRUD-Dapp-Project-Solana",
     github: "https://github.com/usmanimran-dev/CRUD-Dapp-Project-Solana"
@@ -221,7 +221,7 @@ const projects = [
     subtitle: "Grocery Delivery",
     description: "On-demand grocery delivery application prototype built with Bubble.io for rapid deployment and scale.",
     image: cartistan,
-    category: "nocode",
+    category: "mobile-apps",
     tags: ["Bubble.io", "Delivery", "UX"],
     link: "https://cartistan-73886.bubbleapps.io/version-test",
     github: ""
@@ -232,7 +232,7 @@ const projects = [
     subtitle: "AI Project Manager",
     description: "AI-powered internal tool for project management, engineered with Bubble.io's advanced logic engine.",
     image: flowImg,
-    category: "nocode",
+    category: "automation",
     tags: ["Bubble.io", "AI", "Management"],
     link: "https://demo-app-63324.bubbleapps.io/version-test/?&v=projects",
     github: ""
@@ -243,7 +243,7 @@ const projects = [
     subtitle: "B2B Shopify Integration",
     description: "A custom Node.js desktop engine that bridges a B2B diamond supplier API to Shopify. Auto-syncs 1,200+ products daily with 60+ metafields, custom OAuth, and zero cloud hosting costs.",
     image: "https://oxputeaplbndzolsnyto.supabase.co/storage/v1/object/sign/Usman%20Imran/WhatsApp%20Image%202026-02-21%20at%207.14.23%20PM.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wNmIzYmExMi1hYzlhLTQ3YTQtOTNkNS0xYTEyMzE4NTM4NTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJVc21hbiBJbXJhbi9XaGF0c0FwcCBJbWFnZSAyMDI2LTAyLTIxIGF0IDcuMTQuMjMgUE0uanBlZyIsImlhdCI6MTc3MjAzNTI4NCwiZXhwIjoxODAzNTcxMjg0fQ.m3IUjzIuOCXRRl3pLEjrstbMiLFRRy7UzbCNGH2nlpQ",
-    category: "full-stack",
+    category: "automation",
     tags: ["Node.js", "Shopify API", "Automation"],
     link: "https://github.com/usmanimran-dev/CGD-API-Project",
     github: "https://github.com/usmanimran-dev/CGD-API-Project"
@@ -448,33 +448,23 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
 
 export const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [activeFilter, setActiveFilter] = useState("web-apps");
   const [showAll, setShowAll] = useState(false);
 
   const filters = [
-    { id: "all", label: "All" },
-    { id: "full-stack", label: "Full-Stack" },
-    { id: "shopify-wordpress", label: "E-Commerce" },
-    { id: "nocode", label: "No-Code" }
+    { id: "mobile-apps", label: "Mobile Apps" },
+    { id: "web-apps", label: "Web Apps" },
+    { id: "automation", label: "Automation" },
+    { id: "shopify", label: "Shopify" }
   ];
 
   const filteredProjects = useMemo(() => {
-    const base = activeFilter === "all"
-      ? projects
-      : activeFilter === "shopify-wordpress"
-        ? projects.filter(project => project.category === "shopify" || project.category === "wordpress")
-        : projects.filter(project => project.category === activeFilter);
-
+    const base = projects.filter(project => project.category === activeFilter);
     return showAll ? base : base.slice(0, 4);
   }, [activeFilter, showAll]);
 
   const hasMore = useMemo(() => {
-    const base = activeFilter === "all"
-      ? projects
-      : activeFilter === "shopify-wordpress"
-        ? projects.filter(project => project.category === "shopify" || project.category === "wordpress")
-        : projects.filter(project => project.category === activeFilter);
-
+    const base = projects.filter(project => project.category === activeFilter);
     return base.length > 4;
   }, [activeFilter]);
 

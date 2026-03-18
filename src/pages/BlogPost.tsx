@@ -106,17 +106,17 @@ export default function BlogPost() {
                             dangerouslySetInnerHTML={{ __html: cleanArticleContent(blog.content) }}
                         />
 
-                        {/* Read Full Article Button */}
+                        {/* Read Full Article link */}
                         {blog.source_url && (
                             <div className="mt-12 pt-8 border-t border-white/10">
                                 <a
                                     href={blog.source_url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-mint to-emerald-500 text-darkNavy font-bold text-lg hover:shadow-lg hover:shadow-mint/30 transition-all hover:-translate-y-0.5"
+                                    className="text-mint hover:underline font-bold text-lg inline-flex items-center gap-2"
                                 >
+                                    Read full article here
                                     <ExternalLink className="w-5 h-5" />
-                                    Read Full Article
                                 </a>
                             </div>
                         )}

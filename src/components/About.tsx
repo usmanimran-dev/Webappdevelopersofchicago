@@ -29,11 +29,11 @@ export const About = () => {
 
                         <h2 className="text-4xl md:text-5xl font-bold mb-6">
                             Architecting resilient systems
-                            <span className="block gradient-text">for Enterprise & Fintech.</span>
+                            <span className="block gradient-text">for Enterprise Solutions.</span>
                         </h2>
 
                         <p className="text-white text-lg mb-6 leading-relaxed">
-                            We are WDC (Webapp Developers of Chicago), a premium Software Development Agency with a specialized focus on Enterprise Fintech, SaaS architecture, and expansive Digital Mobility & Logistics platforms.
+                            We are WDC (Webapp Developers of Chicago), a premium Software Development Agency with a specialized focus on Enterprise Solutions, SaaS architecture, and expansive Digital Mobility & Logistics platforms.
                         </p>
 
                         <p className="text-textSecondary text-lg leading-relaxed mb-8">

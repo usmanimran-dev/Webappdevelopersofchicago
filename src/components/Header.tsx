@@ -6,6 +6,7 @@ import { AnnouncementBar } from './AnnouncementBar';
 import logoUrl from '../assets/ChatGPT Image Mar 12, 2026, 03_18_26 AM.png';
 import HireUsModal from './HireUsModal';
 import { AIEstimatorModal } from './AIEstimatorModal';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -13,6 +14,9 @@ export function Header() {
     const [hoveredPath, setHoveredPath] = useState<string | null>(null);
     const [isHireModalOpen, setIsHireModalOpen] = useState(false);
     const [isEstimateModalOpen, setIsEstimateModalOpen] = useState(false);
+    
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
@@ -31,20 +35,29 @@ export function Header() {
     }, []);
 
     const navItems = [
-        { label: 'Home', href: '/' },
         { label: 'Services', href: '/#services' },
         { label: 'Projects', href: '/#projects' },
         { label: 'Blog', href: '/blog' },
     ];
 
     const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-        if (href.startsWith('/#') && window.location.pathname === '/') {
-            e.preventDefault();
-            const element = document.querySelector(href.replace('/', ''));
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+        if (href.startsWith('/#')) {
+            if (location.pathname !== '/') {
+                e.preventDefault();
+                navigate(href);
                 setIsMobileMenuOpen(false);
+            } else {
+                e.preventDefault();
+                const element = document.querySelector(href.replace('/', ''));
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                    setIsMobileMenuOpen(false);
+                }
             }
+        } else if (href.startsWith('/')) {
+            e.preventDefault();
+            navigate(href);
+            setIsMobileMenuOpen(false);
         }
     };
 
@@ -60,9 +73,16 @@ export function Header() {
                 <div className="flex items-center justify-between h-24 md:h-28">
                     {/* Logo */}
                     <motion.a
-                        href="#home"
-                        onClick={(e) => scrollToSection(e, '#home')}
-                        className="flex items-center group py-2"
+                        href="/"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            if (location.pathname === '/') {
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            } else {
+                                navigate('/');
+                            }
+                        }}
+                        className="flex items-center group py-2 cursor-pointer"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5 }}

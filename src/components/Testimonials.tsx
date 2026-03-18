@@ -6,8 +6,8 @@ import { gsap } from '../utils/gsapConfig';
 const testimonials = [
     {
         name: 'Enterprise Client',
-        role: 'Fintech Sector',
-        content: 'Incredibly efficient — delivered a very complex, secure enterprise feature in record time.',
+        role: 'Enterprise Sector',
+        content: 'Incredibly efficient — delivered a very complex, secure enterprise solution in record time.',
         avatar: 'https://i.pravatar.cc/150?img=11'
     },
     {

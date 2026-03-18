@@ -579,7 +579,7 @@ export default function HireUsModal({ isOpen, onClose }: HireUsModalProps) {
                                             It seems like the timing or budget isn't right just yet. No worries — we'd love to connect when you're ready.
                                         </p>
                                         <p className="text-white/40 text-sm mb-8">
-                                            Feel free to reach out at <a href="mailto:Webappdevelopersofchicago@gmail.com" className="text-mint underline">Webappdevelopersofchicago@gmail.com</a> when you're ready to move forward.
+                                            Feel free to reach out at <a href="mailto:inquiry@wdc.com" className="text-mint underline">inquiry@wdc.com</a> when you're ready to move forward.
                                         </p>
                                         <button onClick={handleClose} className="px-8 py-3 rounded-xl bg-white/10 text-white font-bold hover:bg-white/20 transition-colors">
                                             Close

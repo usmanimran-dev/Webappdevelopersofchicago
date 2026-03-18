@@ -11,7 +11,7 @@ const services = [
         stack: ['React.js', 'Next.js', 'Node.js']
     },
     {
-        title: 'Enterprise Fintech & Banking',
+        title: 'Enterprise Solutions & Banking',
         description: 'System architecture for major banking institutions (e.g., HBL, Finastra) with compliance-heavy workflows.',
         icon: Globe,
         stack: ['Angular', 'Node.js', 'AWS']

@@ -113,7 +113,7 @@ export default async function handler(req, res) {
                 console.log('Confirmation email sent to client:', clientEmail);
 
                 // B. Send Admin Alert Email to You
-                const adminEmail = process.env.ADMIN_EMAIL || 'Webappdevelopersofchicago@gmail.com';
+                const adminEmail = process.env.ADMIN_EMAIL || 'inquiry@wdc.com';
                 await resend.emails.send({
                     from: fromEmail,
                     to: adminEmail,
