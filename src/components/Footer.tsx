@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import {  Linkedin,  Facebook } from 'lucide-react';
+import { Linkedin, Heart, Facebook } from 'lucide-react';
 import logoUrl from '../assets/ChatGPT Image Mar 12, 2026, 03_18_26 AM.png';
 
 export const Footer = () => {
