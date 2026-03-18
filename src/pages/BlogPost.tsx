@@ -29,6 +29,11 @@ function cleanArticleContent(content: string): string {
         /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,
         '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-mint hover:underline">$1</a>'
     );
+
+    // Remove redundant "Read the full article here" text/links from the body
+    text = text.replace(/<a[^>]*>Read the full article here\.?<\/a>/gi, '');
+    text = text.replace(/Read the full article here\.?/gi, '');
+
     // Remove leftover bracket artifacts (but not the <a> tags we just created)
     text = text.replace(/\[[^\]]{0,40}\]/g, '');
     return text;
